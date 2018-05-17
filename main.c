@@ -11,7 +11,7 @@
 
 int main(void) {
    
-   const int TAILLE = saisie("Entrer la taile du futur tableau [min : 0 - max : 100] : ",
+   const int TAILLE = saisie("Entrer la taille du futur tableau [min : 0 - max : 100] : ",
            "Taille superieur a 0.",0,100);
    const double *tab = init_rand(TAILLE);
    
@@ -19,6 +19,7 @@ int main(void) {
    afficher(tab, TAILLE);
    
    printf("Tri par valeur\n");
+   tri_double(tab, TAILLE, NULL);
    
    
    return (EXIT_SUCCESS);
