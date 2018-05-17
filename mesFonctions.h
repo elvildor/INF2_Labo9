@@ -23,7 +23,7 @@ int saisie(const char* msg_invite, const char* msg_erreur, const int MIN,
 void afficher(const double *adr, const size_t TAILLE);
 
 // Initialisation de double aléatoire
-void init_rand(double *adr, const size_t TAILLE);
+double* init_rand(const size_t TAILLE);
 
 // Trie d'un tableau avec fonction
 double* tri_double(const double *adr, const size_t TAILLE, double (*f)(double));

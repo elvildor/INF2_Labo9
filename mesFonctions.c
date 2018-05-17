@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * mesFonctions.c
+ * 
+ * Jérémy Delay & Eloïse Martin
+ * 
+ * 17.05.2018
  */
 
 #include "mesFonctions.h"
@@ -40,7 +42,8 @@ void afficher(const double *adr, const size_t TAILLE){
    }
 }
 
-void init_rand(double *adr, const size_t TAILLE){
+double* init_rand(const size_t TAILLE){
+   double* adr = (double*) calloc(TAILLE, sizeof(double));
    if(adr){
       srand(time(NULL));
       for(size_t i = 0; i < TAILLE; ++i){
@@ -51,6 +54,7 @@ void init_rand(double *adr, const size_t TAILLE){
          }
       }
    }
+   return adr;
 }
 
 
@@ -64,7 +68,8 @@ double* tri_double(const double *adr, const size_t TAILLE, double (*f)(double)){
    if(adr){
       double ** new = (double**) calloc(TAILLE, sizeof(double*));
       for(size_t i = 0; i < TAILLE; ++i){
-         *new[i] = adr[i];
+         new[i] = adr+i;
+         printf("%g", **(new+i));
       }
       
    }
