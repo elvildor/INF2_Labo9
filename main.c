@@ -13,9 +13,8 @@ int main(void) {
    
    const int TAILLE = saisie("Entrer la taile du futur tableau [min : 0 - max : 100] : ",
            "Taille superieur a 0.",0,100);
-   double *tab = calloc(TAILLE, sizeof(double));
+   const double *tab = init_rand(TAILLE);
    
-   init_rand(tab, TAILLE);
    printf("Tableau avant le tri\n");
    afficher(tab, TAILLE);
    
