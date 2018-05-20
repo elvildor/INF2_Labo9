@@ -22,10 +22,13 @@ int main(void) {
 
    printf("Tri par valeur\n");
    tabTri = tri_double(tab, TAILLE, NULL);
+   printf("test %g\n", *tabTri);
    afficher(tabTri, TAILLE, NULL);
+   printf("test %g\n", *tabTri);
    free(tabTri);
+   printf("test %g\n", *tabTri);
    tabTri = NULL;
-
+   
    printf("Tri par les sinus\n");
    tabTri = tri_double(tab, TAILLE, sin);
    afficher(tabTri, TAILLE, sin);

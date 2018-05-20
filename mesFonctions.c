@@ -75,15 +75,15 @@ double* tri_double(const double *adr, const size_t TAILLE, double (*f)(double)) 
       //printf("%g ", **(new+i));
    }
    
-   /*for(size_t i = 0; i < TAILLE; ++i){
-      for(size_t j = 0; j < TAILLE - i; ++j){
+   for(size_t i = 0; i < TAILLE; ++i){
+      for(size_t j = 0; j < TAILLE - i - 1; ++j){
          if((f ? f(*new[j]) : *new[j]) > (f ? f(*new[j + 1]) : *new[j + 1])){
             tmp = new[j];
             new[j] = new[j + 1];
             new[j + 1] = tmp;
          }
       }
-   }*/
+   }
    
    return *new;
 }
