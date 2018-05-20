@@ -3,7 +3,7 @@
  * 
  * Jérémy Delay & Eloïse Martin
  * 
- * 17.05.2018
+ * 23.05.2018
  */
 
 #include "mesFonctions.h"
@@ -15,6 +15,8 @@
 
 #define EOL '\n'
 #define CLEAN_BUFFER while(getchar() != EOL)
+
+// Saisie d'un entier avec min et max
 
 int saisie(const char* msg_invite, const char* msg_erreur, const int MIN,
         const int MAX) {
@@ -32,6 +34,8 @@ int saisie(const char* msg_invite, const char* msg_erreur, const int MIN,
    return (int) retour;
 }
 
+// Affichage d'un tableau avec fonction optionnelle
+
 void afficher(const double *adr, const size_t TAILLE, double (*f)(double)) {
    assert(adr != NULL);
 
@@ -41,6 +45,8 @@ void afficher(const double *adr, const size_t TAILLE, double (*f)(double)) {
       printf("%g\n", (f ? f(adr[i]) : adr[i]));
    }
 }
+
+// Création et initialisation d'un tableau de valeurs aléatoires de type double
 
 double* init_rand(const size_t TAILLE) {
    double* adr = (double*) calloc(TAILLE, sizeof (double));
@@ -58,6 +64,14 @@ double* init_rand(const size_t TAILLE) {
    return adr;
 }
 
+// Copie d'adresses dans un tableau
+
+void pointeTab(const double *src, double **dest, const size_t TAILLE){
+   for (size_t i = 0; i < TAILLE; ++i) {
+      dest[i] = src + i;
+      printf("pos : %d - val : %d ", i, *dest[i]);
+   }
+}
 
 // jamais stocker la valeur
 // créer tab valeurs
@@ -68,16 +82,10 @@ double* init_rand(const size_t TAILLE) {
 double* tri_double(const double *adr, const size_t TAILLE, double (*f)(double)) {
    assert(adr != NULL);
    double* tmp;
-   double ** new = (double**) calloc(TAILLE, sizeof (double*));
-   //Intialise le tab
-   for (size_t i = 0; i < TAILLE; ++i) {
-      new[i] = adr + i;
-      //printf("%g ", **(new+i));
-   }
    
    for(size_t i = 0; i < TAILLE; ++i){
       for(size_t j = 0; j < TAILLE - i - 1; ++j){
-         if((f ? f(*new[j]) : *new[j]) > (f ? f(*new[j + 1]) : *new[j + 1])){
+         if((f ? f(*copie[j]) : *new[j]) > (f ? f(*new[j + 1]) : *new[j + 1])){
             tmp = new[j];
             new[j] = new[j + 1];
             new[j + 1] = tmp;
