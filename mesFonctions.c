@@ -19,10 +19,10 @@
 
 #define EOL '\n'
 #define CLEAN_BUFFER while(getchar() != EOL)
-#define BORNE 91
+#define BORNE 100     // afin d'abtenir des nombres dans cet intervalle ]-100;100[
 
 int saisie(const char *msg_invite, const char *msg_erreur, const int MIN,
-        const int MAX) {
+           const int MAX) {
    int i = 0;
    int ok = 1;
    long retour;
@@ -38,22 +38,21 @@ int saisie(const char *msg_invite, const char *msg_erreur, const int MIN,
 }
 
 void affiche(double a, size_t i){
-   printf("%d : ", i);
-   if(a >= 0) printf(" ");
-   printf("%g\n", a);
+   printf("%u : ", i);
+   printf("%11.5f\n", a);
 }
 
-void parcoursDblPtr(const double *adr, const size_t TAILLE, void (*f)(double, size_t),
-        double (*g)(double)){
+void parcoursDblPtr(const double *adr, const size_t TAILLE, double (*g)(double)){
+   assert(adr!= NULL);
    for(size_t i = 0; i < TAILLE; ++i){
-      g ? f(g(*(adr + i)), i) : f(*(adr + i), i);
+      g ? affiche(g(*(adr + i)), i) : affiche(*(adr + i), i);
    }
 }
 
-void parcoursDblPtrPtr(const double **adr, const size_t TAILLE, void (*f)(double, size_t),
-        double (*g)(double)){
+void parcoursDblPtrPtr(const double **adr, const size_t TAILLE, double (*g)(double)){
+   assert(adr != NULL);
    for(size_t i = 0; i < TAILLE; ++i){
-      g ? f(g(**(adr + i)), i) : f(**(adr + i), i);
+      g ? affiche(g(**(adr + i)), i) : affiche(**(adr + i), i);
    }
 }
 
@@ -79,6 +78,7 @@ void libererMemoire(double ***ptr) { // libererMemoire(&ptr);
 }
 
 void pointeTab(const double *src, double **dest, const size_t TAILLE){
+   assert(src != NULL && dest != NULL);
    for(size_t i = 0; i < TAILLE; ++i){
       dest[i] = (double*)&src[i]; 
    }
