@@ -16,7 +16,7 @@
 #define EOL '\n'
 #define CLEAN_BUFFER while(getchar() != EOL)
 
-// Saisie d'un entier avec min et max
+// Saisie d'un entier borné par min et max
 
 int saisie(const char* msg_invite, const char* msg_erreur, const int MIN,
         const int MAX) {
@@ -34,24 +34,38 @@ int saisie(const char* msg_invite, const char* msg_erreur, const int MIN,
    return (int) retour;
 }
 
-// Affichage d'un tableau avec fonction optionnelle
+// affiche un double
 
-void afficher(const double *adr, const size_t TAILLE, double (*f)(double)) {
-   assert(adr != NULL);
+void affiche(double a, size_t i){
+   printf("%d : ", i);
+   if(a >= 0) printf(" ");
+   printf("%g\n", a);
+}
 
-   for (size_t i = 0; i < TAILLE; ++i) {
-      printf("%d : ", i);
-      if ((f ? f(adr[i]) : adr[i]) >= 0) printf(" ");
-      printf("%g\n", (f ? f(adr[i]) : adr[i]));
+// parcours double*
+
+void parcoursDblPtr(const double* adr, const size_t TAILLE, double (*f)(double, size_t),
+        double (*g)(double)){
+   for(size_t i = 0; i < TAILLE; ++i){
+      g ? f(g(*(adr + i)), i) : f(*(adr + i), i);
    }
 }
 
-// Création et initialisation d'un tableau de valeurs aléatoires de type double
+// parcours double**
+
+void parcoursDblPtrPtr(const double** adr, const size_t TAILLE, double (*f)(double, size_t),
+        double (*g)(double)){
+   for(size_t i = 0; i < TAILLE; ++i){
+      g ? f(g(**(adr + i)), i) : f(**(adr + i), i);
+   }
+}
+
+// Crée et iniatialise un tableau de double
 
 double* init_rand(const size_t TAILLE) {
    double* adr = (double*) calloc(TAILLE, sizeof (double));
    assert(adr != NULL);
-   
+
    srand(time(NULL));
    for (size_t i = 0; i < TAILLE; ++i) {
       if (rand() < rand()) {
@@ -60,16 +74,20 @@ double* init_rand(const size_t TAILLE) {
          adr[i] = (rand() % 20) + (rand() / (double) RAND_MAX);
       }
    }
-   
+
    return adr;
 }
 
-// Copie d'adresses dans un tableau
+// libère la mémoire
+
+void libererMemoire(void** ptr) { // libererMemoire(&ptr);
+   free(*ptr);
+   *ptr = NULL;
+}
 
 void pointeTab(const double *src, double **dest, const size_t TAILLE){
-   for (size_t i = 0; i < TAILLE; ++i) {
-      dest[i] = src + i;
-      printf("pos : %d - val : %d ", i, *dest[i]);
+   for(size_t i = 0; i < TAILLE; ++i){
+      dest[i] = &src[i]; 
    }
 }
 
@@ -79,23 +97,30 @@ void pointeTab(const double *src, double **dest, const size_t TAILLE){
 // trier(tab, fonct)
 // parcourir(tab, fonct)
 
-double* tri_double(const double *adr, const size_t TAILLE, double (*f)(double)) {
+double** tri_double(const double *adr, const size_t TAILLE, double (*f)(double)) {
    assert(adr != NULL);
    double* tmp;
-   
-   for(size_t i = 0; i < TAILLE; ++i){
-      for(size_t j = 0; j < TAILLE - i - 1; ++j){
-         if((f ? f(*copie[j]) : *new[j]) > (f ? f(*new[j + 1]) : *new[j + 1])){
+   double ** new = (double**) calloc(TAILLE, sizeof (double*));
+   //Intialise le tab
+   for (size_t i = 0; i < TAILLE; ++i) {
+      new[i] = &adr[i];
+   }
+
+   for (size_t i = 0; i < TAILLE; ++i) {
+      for (size_t j = 0; j < TAILLE - i - 1; ++j) {
+         if ((f ? f(*new[j]) : *new[j]) >= (f ? f(*new[j + 1]) : *new[j + 1])) {
             tmp = new[j];
             new[j] = new[j + 1];
             new[j + 1] = tmp;
          }
       }
    }
-   
-   return *new;
+
+   return new;
 }
 
-double carre(double x){
+// Calcule le carré
+
+double carre(double x) {
    return x*x;
 }

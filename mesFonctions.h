@@ -11,29 +11,30 @@
 #include <stdlib.h>
 
 // Saisie d'un entier borné
-
 int saisie(const char* msg_invite, const char* msg_erreur, const int MIN,
         const int MAX);
 
-// Affiche un tableau
+// Affiche un double
+void affiche(double a, size_t i);
 
-void afficher(const double *adr, const size_t TAILLE, double (*f)(double));
+// Parcours un tableau de double*
+void parcoursDblPtr(const double* adr, const size_t TAILLE, double (*f)(double, size_t),
+        double (*g)(double));
+
+// Parcours un tableau de double**
+void parcoursDblPtrPtr(const double** adr, const size_t TAILLE, double (*f)(double, size_t),
+        double (*g)(double));
 
 // Initialisation de double aléatoire
-
 double* init_rand(const size_t TAILLE);
 
 // Trie d'un tableau avec fonction
+double** tri_double(const double *adr, const size_t TAILLE, double (*f)(double));
 
-double* tri_double(const double *adr, const size_t TAILLE, double (*f)(double));
-
-// carré
-
+// Calcule le carré
 double carre(double x);
 
-// Copie d'adresses dans un tableau
-
-void pointeTab(const double *src, double **dest, const size_t TAILLE);
+// Libère la mémoire
+void libererMemoire(void** ptr);
 
 #endif /* MESFONCTIONS_H */
-
