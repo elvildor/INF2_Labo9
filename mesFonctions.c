@@ -1,10 +1,15 @@
 /*
- * mesFonctions.c
- * 
- * Jérémy Delay & Eloïse Martin
- * 
- * 23.05.2018
- */
+ -----------------------------------------------------------------------------------
+ Laboratoire : 09
+ Fichier     : mesFonctions.c
+ Auteur(s)   : Jérémy Delay & Eloïse Martin
+ Date        : 23.05.2018
+
+ But         : Définit les fonctions déclarées dans le fichier mesFonctions.h
+
+ Compilateur : MinGW-gcc 6.3.0
+ -----------------------------------------------------------------------------------
+*/
 
 #include "mesFonctions.h"
 #include <stdio.h>
@@ -89,7 +94,7 @@ void libererMemoire(double*** ptr) { // libererMemoire(&ptr);
 
 void pointeTab(const double *src, double **dest, const size_t TAILLE){
    for(size_t i = 0; i < TAILLE; ++i){
-      dest[i] = &src[i]; 
+      dest[i] = (double*)&src[i]; 
    }
 }
 

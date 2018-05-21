@@ -1,10 +1,15 @@
 /*
- * mesFonctions.h
- * 
- * Jérémy Delay & Eloïse Martin
- * 
- * 23.05.2018
- */
+ -----------------------------------------------------------------------------------
+ Laboratoire : 09
+ Fichier     : mesFonctions.h
+ Auteur(s)   : Jérémy Delay & Eloïse Martin
+ Date        : 23.05.2018
+
+ But         : Déclare les fonctions définient dans le fichier mesFonctions.c
+
+ Compilateur : MinGW-gcc 6.3.0
+ -----------------------------------------------------------------------------------
+*/
 
 #ifndef MESFONCTIONS_H
 #define MESFONCTIONS_H
