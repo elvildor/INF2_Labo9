@@ -14,6 +14,7 @@
 
 #define EOL '\n'
 #define CLEAN_BUFFER while(getchar() != EOL)
+#define BORNE 91
 
 // Saisie d'un entier borné par min et max
 
@@ -68,9 +69,9 @@ double* init_rand(const size_t TAILLE) {
    srand(time(NULL));
    for (size_t i = 0; i < TAILLE; ++i) {
       if (rand() < rand()) {
-         adr[i] = -((rand() % 20) + (rand() / (double) RAND_MAX));
+         adr[i] = -((rand() % BORNE) + (rand() / (double) RAND_MAX));
       } else {
-         adr[i] = (rand() % 20) + (rand() / (double) RAND_MAX);
+         adr[i] = (rand() % BORNE) + (rand() / (double) RAND_MAX);
       }
    }
 
