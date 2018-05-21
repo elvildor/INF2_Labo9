@@ -52,6 +52,6 @@ int main(void) {
    
    libererMemoire(&copie);
    
-   printf("\nFin du programme\n");
+   printf("\nFin du programme\n\n\n");
    return (EXIT_SUCCESS);
 }
