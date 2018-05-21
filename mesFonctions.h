@@ -22,11 +22,13 @@ int saisie(const char *msg_invite, const char *msg_erreur, const int MIN,
 // Affiche un double avec un formattage scpécifique
 void affiche(double a, size_t i);
 
-// Parcours un tableau de pointeur sur double
+// Parcours un tableau de pointeur sur double, avec les deux derniers paramètres à null
+// Cette fonction correspond à la fonction identité
 void parcoursDblPtr(const double *adr, const size_t TAILLE, void (*f)(double, size_t),
         double (*g)(double));
 
-// Parcours un tableau de pointeur de pointeur sur double
+// Parcours un tableau de pointeur de pointeur sur double, avec les deux derniers paramètres à null
+// Cette fonction correspond à la fonction identité
 void parcoursDblPtrPtr(const double **adr, const size_t TAILLE, void (*f)(double, size_t),
         double (*g)(double));
 
