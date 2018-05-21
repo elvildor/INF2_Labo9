@@ -4,6 +4,14 @@
  * Jérémy Delay & Eloïse Martin
  * 
  * 23.05.2018
+ * 
+ * Commentaires prof :
+ * jamais stocker la valeur
+ * créer tab valeurs
+ * créer tabPtr(alignés)
+ * trier(tabPtr, fonct)
+ * parcourir(tabPtr, fonct)
+ *
  */
 
 #include <stdio.h>
@@ -18,28 +26,31 @@ int main(void) {
    const double *tab = init_rand(TAILLE);
    double **tabTri = (double**) calloc(TAILLE, sizeof (double*));
    
-   printf("Tableau avant le tri\n");
+   printf("\nTableau avant le tri\n");
    parcoursDblPtr(tab, TAILLE, affiche, NULL);
-
-   printf("Tri par valeur\n");
-   tabTri = tri_double(tab, TAILLE, NULL);
+   
+   pointeTab(tab, tabTri, TAILLE);
+   printf("\nTri par valeur\n");
+   tri_double(tabTri, TAILLE, NULL);
    parcoursDblPtrPtr(tabTri, TAILLE, affiche, NULL);
+   
+   pointeTab(tab, tabTri, TAILLE);
+   printf("\nTri par les sinus\n");
+   tri_double(tabTri, TAILLE, sin);
+   parcoursDblPtrPtr(tabTri, TAILLE, affiche, sin);
+   
+   pointeTab(tab, tabTri, TAILLE);
+   printf("\nTri par les cosinus\n");
+   tri_double(tabTri, TAILLE, cos);
+   parcoursDblPtrPtr(tabTri, TAILLE, affiche, cos);
+   
+   pointeTab(tab, tabTri, TAILLE);
+   printf("\nTri par les carres\n");
+   tri_double(tabTri, TAILLE, carre);
+   parcoursDblPtrPtr(tabTri, TAILLE, affiche, carre);
+   
    libererMemoire(&tabTri);
    
-   printf("Tri par les sinus\n");
-   tabTri = tri_double(tab, TAILLE, sin);
-   parcoursDblPtrPtr(tabTri, TAILLE, affiche, sin);
-   libererMemoire(&tabTri);
-
-   printf("Tri par les cosinus\n");
-   tabTri = tri_double(tab, TAILLE, cos);
-   parcoursDblPtrPtr(tabTri, TAILLE, affiche, cos);
-   libererMemoire(&tabTri);
-
-   printf("Tri par les carres\n");
-   tabTri = tri_double(tab, TAILLE, carre);
-   parcoursDblPtrPtr(tabTri, TAILLE, affiche, carre);
-   libererMemoire(&tabTri);
-
+   printf("\nFin du programme\n");
    return (EXIT_SUCCESS);
 }

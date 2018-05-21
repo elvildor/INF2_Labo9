@@ -28,8 +28,11 @@ void parcoursDblPtrPtr(const double** adr, const size_t TAILLE, double (*f)(doub
 // Initialisation de double aléatoire
 double* init_rand(const size_t TAILLE);
 
+// copie d'adresse
+void pointeTab(const double *src, double **dest, const size_t TAILLE);
+
 // Trie d'un tableau avec fonction
-double** tri_double(const double *adr, const size_t TAILLE, double (*f)(double));
+void tri_double(double **adr, const size_t TAILLE, double (*f)(double));
 
 // Calcule le carré
 double carre(double x);

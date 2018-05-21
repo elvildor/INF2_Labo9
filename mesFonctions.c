@@ -85,38 +85,29 @@ void libererMemoire(void** ptr) { // libererMemoire(&ptr);
    *ptr = NULL;
 }
 
+// copie de pointeurs
+
 void pointeTab(const double *src, double **dest, const size_t TAILLE){
    for(size_t i = 0; i < TAILLE; ++i){
       dest[i] = &src[i]; 
    }
 }
 
-// jamais stocker la valeur
-// créer tab valeurs
-// créer tab ptr(alignés)
-// trier(tab, fonct)
-// parcourir(tab, fonct)
+// tri d'un tableau en fonction d'une fonction
 
-double** tri_double(const double *adr, const size_t TAILLE, double (*f)(double)) {
+void tri_double(double **adr, const size_t TAILLE, double (*f)(double)) {
    assert(adr != NULL);
    double* tmp;
-   double ** new = (double**) calloc(TAILLE, sizeof (double*));
-   //Intialise le tab
-   for (size_t i = 0; i < TAILLE; ++i) {
-      new[i] = &adr[i];
-   }
-
+   
    for (size_t i = 0; i < TAILLE; ++i) {
       for (size_t j = 0; j < TAILLE - i - 1; ++j) {
-         if ((f ? f(*new[j]) : *new[j]) >= (f ? f(*new[j + 1]) : *new[j + 1])) {
-            tmp = new[j];
-            new[j] = new[j + 1];
-            new[j + 1] = tmp;
+         if ((f ? f(*adr[j]) : *adr[j]) >= (f ? f(*adr[j + 1]) : *adr[j + 1])) {
+            tmp = adr[j];
+            adr[j] = adr[j + 1];
+            adr[j + 1] = tmp;
          }
       }
    }
-
-   return new;
 }
 
 // Calcule le carré
