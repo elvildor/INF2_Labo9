@@ -5,7 +5,7 @@
  Auteur(s)   : Jérémy Delay & Eloïse Martin
  Date        : 23.05.2018
 
- But         : Déclare les fonctions définient dans le fichier mesFonctions.c
+ But         : Déclare les fonctions définies dans le fichier mesFonctions.c
 
  Compilateur : MinGW-gcc 6.3.0
  -----------------------------------------------------------------------------------

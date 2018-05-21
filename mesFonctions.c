@@ -19,7 +19,7 @@
 
 #define EOL '\n'
 #define CLEAN_BUFFER while(getchar() != EOL)
-#define BORNE 100     // afin d'abtenir des nombres dans cet intervalle ]-100;100[
+#define BORNE 100     // afin d'obtenir des nombres dans cet intervalle ]-100;100[
 
 int saisie(const char *msg_invite, const char *msg_erreur, const int MIN,
            const int MAX) {
@@ -72,7 +72,7 @@ double* init_rand(const size_t TAILLE) {
    return adr;
 }
 
-void libererMemoire(double ***ptr) { // libererMemoire(&ptr);
+void libererMemoire(double ***ptr) {
    free(*ptr);
    *ptr = NULL;
 }
