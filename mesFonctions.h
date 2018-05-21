@@ -15,34 +15,34 @@
 #define MESFONCTIONS_H
 #include <stdlib.h>
 
-// Saisie d'un entier borné
-int saisie(const char* msg_invite, const char* msg_erreur, const int MIN,
+// Saisie d'un entier borné entre MIN et MAX (bornes comprises)
+int saisie(const char *msg_invite, const char *msg_erreur, const int MIN,
         const int MAX);
 
-// Affiche un double
+// Affiche un double avec un formattage scpécifique
 void affiche(double a, size_t i);
 
-// Parcours un tableau de double*
-void parcoursDblPtr(const double* adr, const size_t TAILLE, void (*f)(double, size_t),
+// Parcours un tableau de pointeur sur double
+void parcoursDblPtr(const double *adr, const size_t TAILLE, void (*f)(double, size_t),
         double (*g)(double));
 
-// Parcours un tableau de double**
-void parcoursDblPtrPtr(const double** adr, const size_t TAILLE, void (*f)(double, size_t),
+// Parcours un tableau de pointeur de pointeur sur double
+void parcoursDblPtrPtr(const double **adr, const size_t TAILLE, void (*f)(double, size_t),
         double (*g)(double));
 
-// Initialisation de double aléatoire
+// Initialisation et allocation dynamique d'un tableau de double aléatoire
 double* init_rand(const size_t TAILLE);
 
-// copie d'adresse
+// copie d'adresse d'un tableau vers un pointeur de pointeur sur double
 void pointeTab(const double *src, double **dest, const size_t TAILLE);
 
-// Trie d'un tableau avec fonction
+// Trie un tableau avec fonction donnée
 void tri_double(double **adr, const size_t TAILLE, double (*f)(double));
 
-// Calcule le carré
+// Calcule le carré d'un double
 double carre(double x);
 
-// Libère la mémoire
-void libererMemoire(double*** ptr);
+// Libère la mémoire d'un pointeur de pointeur
+void libererMemoire(double ***ptr);
 
 #endif /* MESFONCTIONS_H */

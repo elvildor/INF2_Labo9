@@ -21,9 +21,7 @@
 #define CLEAN_BUFFER while(getchar() != EOL)
 #define BORNE 91
 
-// Saisie d'un entier borné par min et max
-
-int saisie(const char* msg_invite, const char* msg_erreur, const int MIN,
+int saisie(const char *msg_invite, const char *msg_erreur, const int MIN,
         const int MAX) {
    int i = 0;
    int ok = 1;
@@ -39,33 +37,25 @@ int saisie(const char* msg_invite, const char* msg_erreur, const int MIN,
    return (int) retour;
 }
 
-// affiche un double
-
 void affiche(double a, size_t i){
    printf("%d : ", i);
    if(a >= 0) printf(" ");
    printf("%g\n", a);
 }
 
-// parcours double*
-
-void parcoursDblPtr(const double* adr, const size_t TAILLE, void (*f)(double, size_t),
+void parcoursDblPtr(const double *adr, const size_t TAILLE, void (*f)(double, size_t),
         double (*g)(double)){
    for(size_t i = 0; i < TAILLE; ++i){
       g ? f(g(*(adr + i)), i) : f(*(adr + i), i);
    }
 }
 
-// parcours double**
-
-void parcoursDblPtrPtr(const double** adr, const size_t TAILLE, void (*f)(double, size_t),
+void parcoursDblPtrPtr(const double **adr, const size_t TAILLE, void (*f)(double, size_t),
         double (*g)(double)){
    for(size_t i = 0; i < TAILLE; ++i){
       g ? f(g(**(adr + i)), i) : f(**(adr + i), i);
    }
 }
-
-// Crée et iniatialise un tableau de double
 
 double* init_rand(const size_t TAILLE) {
    double* adr = (double*) calloc(TAILLE, sizeof (double));
@@ -83,22 +73,16 @@ double* init_rand(const size_t TAILLE) {
    return adr;
 }
 
-// libère la mémoire
-
-void libererMemoire(double*** ptr) { // libererMemoire(&ptr);
+void libererMemoire(double ***ptr) { // libererMemoire(&ptr);
    free(*ptr);
    *ptr = NULL;
 }
-
-// copie de pointeurs
 
 void pointeTab(const double *src, double **dest, const size_t TAILLE){
    for(size_t i = 0; i < TAILLE; ++i){
       dest[i] = (double*)&src[i]; 
    }
 }
-
-// tri d'un tableau en fonction d'une fonction
 
 void tri_double(double **adr, const size_t TAILLE, double (*f)(double)) {
    assert(adr != NULL);
@@ -114,8 +98,6 @@ void tri_double(double **adr, const size_t TAILLE, double (*f)(double)) {
       }
    }
 }
-
-// Calcule le carré
 
 double carre(double x) {
    return x*x;
