@@ -18,11 +18,11 @@ int saisie(const char* msg_invite, const char* msg_erreur, const int MIN,
 void affiche(double a, size_t i);
 
 // Parcours un tableau de double*
-void parcoursDblPtr(const double* adr, const size_t TAILLE, double (*f)(double, size_t),
+void parcoursDblPtr(const double* adr, const size_t TAILLE, void (*f)(double, size_t),
         double (*g)(double));
 
 // Parcours un tableau de double**
-void parcoursDblPtrPtr(const double** adr, const size_t TAILLE, double (*f)(double, size_t),
+void parcoursDblPtrPtr(const double** adr, const size_t TAILLE, void (*f)(double, size_t),
         double (*g)(double));
 
 // Initialisation de double aléatoire
@@ -38,6 +38,6 @@ void tri_double(double **adr, const size_t TAILLE, double (*f)(double));
 double carre(double x);
 
 // Libère la mémoire
-void libererMemoire(void** ptr);
+void libererMemoire(double*** ptr);
 
 #endif /* MESFONCTIONS_H */

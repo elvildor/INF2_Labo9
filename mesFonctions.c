@@ -11,7 +11,6 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <time.h>
-#include <limits.h>
 
 #define EOL '\n'
 #define CLEAN_BUFFER while(getchar() != EOL)
@@ -44,7 +43,7 @@ void affiche(double a, size_t i){
 
 // parcours double*
 
-void parcoursDblPtr(const double* adr, const size_t TAILLE, double (*f)(double, size_t),
+void parcoursDblPtr(const double* adr, const size_t TAILLE, void (*f)(double, size_t),
         double (*g)(double)){
    for(size_t i = 0; i < TAILLE; ++i){
       g ? f(g(*(adr + i)), i) : f(*(adr + i), i);
@@ -53,7 +52,7 @@ void parcoursDblPtr(const double* adr, const size_t TAILLE, double (*f)(double, 
 
 // parcours double**
 
-void parcoursDblPtrPtr(const double** adr, const size_t TAILLE, double (*f)(double, size_t),
+void parcoursDblPtrPtr(const double** adr, const size_t TAILLE, void (*f)(double, size_t),
         double (*g)(double)){
    for(size_t i = 0; i < TAILLE; ++i){
       g ? f(g(**(adr + i)), i) : f(**(adr + i), i);
@@ -80,7 +79,7 @@ double* init_rand(const size_t TAILLE) {
 
 // libère la mémoire
 
-void libererMemoire(void** ptr) { // libererMemoire(&ptr);
+void libererMemoire(double*** ptr) { // libererMemoire(&ptr);
    free(*ptr);
    *ptr = NULL;
 }
