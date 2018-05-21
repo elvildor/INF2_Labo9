@@ -5,7 +5,7 @@
  Auteur(s)   : Jérémy Delay & Eloïse Martin
  Date        : 23.05.2018
 
- But         : réaliser un programme qui réserve dynamiquement de la mémoire pour
+ But         : Réaliser un programme qui réserve dynamiquement de la mémoire pour
                y stocker un tableau de double et le trier en fonction de différents
                paramètres en utilisant des pointeurs
 
@@ -23,7 +23,7 @@
 int main(void) {
 
    const int TAILLE = saisie("Entrer la taille du futur tableau [min : 0 - max : 100] : ",
-           "Taille non comprise entre les bornes.\a", 0, 100);
+                             "Taille non comprise entre les bornes.\a", 0, 100);
    const double *tab = init_rand(TAILLE);
    double **copie = (double**) calloc(TAILLE, sizeof (double*));
    
